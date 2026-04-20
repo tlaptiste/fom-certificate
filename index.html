@@ -4,468 +4,284 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Certificate of Completion — Foundations of Management</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Jost:wght@200;300;400;500&family=Dancing+Script:wght@600&family=Great+Vibes&family=Pinyon+Script&family=Allura&display=swap" rel="stylesheet" />
+  <title>FOM Certificate of Completion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --navy-deep:   #0D1B26;
-      --navy:        #1A2B3C;
-      --navy-mid:    #1E3047;
-      --silver-dim:  #4E6275;
-      --silver:      #7A95AB;
-      --silver-mid:  #A8BDC9;
-      --silver-light:#C8D8E4;
-      --silver-pale: #E2ECF2;
-      --cream:       #EDF4F9;
-      --white:       #FFFFFF;
-      --fs: 'Jost', sans-serif;
-      --fd: 'Libre Baskerville', serif;
-      --sig: 'Dancing Script', cursive;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
 ```
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body {
-  height: 100%;
-  font-family: var(--fs);
-  background: var(--navy-deep);
-  color: var(--white);
-  overflow-x: hidden;
-}
-
-.shell {
+body {
+  font-family: 'Jost', sans-serif;
+  background: #0D1B26;
+  color: #fff;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 340px 1fr;
 }
 
-/* ─── LEFT PANEL ─── */
 .panel {
-  background: var(--navy);
-  padding: 52px 40px;
+  background: #1A2B3C;
+  padding: 48px 36px;
   display: flex;
   flex-direction: column;
   border-right: 1px solid rgba(138,159,180,0.12);
-  position: relative;
-  overflow: hidden;
-}
-.panel::before {
-  content: '';
-  position: absolute;
-  top: -40%; left: -30%;
-  width: 160%; height: 80%;
-  background: radial-gradient(ellipse at 40% 40%, rgba(197,208,220,0.06) 0%, transparent 65%);
-  pointer-events: none;
-}
-.panel::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--silver) 40%, var(--silver-light) 50%, var(--silver) 60%, transparent);
 }
 
-.panel-eyebrow {
-  font-size: 7.5px;
-  font-weight: 300;
+.eyebrow {
+  font-size: 7px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--silver-dim);
-  margin-bottom: 44px;
+  color: #4E6275;
+  margin-bottom: 36px;
 }
 
-.wordmark { margin-bottom: 44px; }
+.wordmark { margin-bottom: 36px; }
 .wordmark-fom {
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 8px;
-  color: var(--silver-light);
+  color: #C8D8E4;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 .wordmark-sub {
-  font-size: 6.5px;
-  font-weight: 300;
-  letter-spacing: 4px;
+  font-size: 6px;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
-  color: var(--silver-dim);
+  color: #4E6275;
 }
 .wordmark-sub em {
-  font-family: var(--fd);
+  font-family: 'Libre Baskerville', serif;
   font-style: italic;
-  font-size: 7.5px;
-  letter-spacing: 2px;
+  font-size: 7px;
 }
 
-.panel-divider {
+.divider {
   width: 28px; height: 1px;
-  background: var(--silver-dim);
+  background: #4E6275;
   opacity: 0.4;
-  margin-bottom: 38px;
+  margin-bottom: 32px;
 }
 
-.panel-heading {
-  font-family: var(--fd);
-  font-size: 26px;
+.panel h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 24px;
   font-style: italic;
-  color: var(--white);
-  line-height: 1.3;
-  margin-bottom: 12px;
-}
-
-.panel-sub {
-  font-size: 11.5px;
-  font-weight: 300;
-  color: var(--silver);
-  line-height: 1.85;
-  margin-bottom: 40px;
-}
-
-/* Form */
-.form-group { margin-bottom: 26px; }
-
-.form-label {
-  display: block;
-  font-size: 7.5px;
   font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--silver-dim);
+  line-height: 1.3;
   margin-bottom: 10px;
 }
 
-.form-input {
+.panel-sub {
+  font-size: 11px;
+  font-weight: 300;
+  color: #7A95AB;
+  line-height: 1.85;
+  margin-bottom: 36px;
+}
+
+.field-label {
+  font-size: 7px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4E6275;
+  margin-bottom: 8px;
+}
+
+.field-group { margin-bottom: 24px; }
+
+input[type="text"] {
   width: 100%;
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(138,159,180,0.3);
   padding: 10px 0;
-  font-family: var(--fd);
+  font-family: 'Libre Baskerville', serif;
   font-size: 17px;
   font-style: italic;
-  color: var(--white);
+  color: #fff;
   outline: none;
-  transition: border-color 0.2s;
-  border-radius: 0;
-  -webkit-appearance: none;
 }
-.form-input::placeholder { color: rgba(197,208,220,0.18); font-style: italic; }
-.form-input:focus { border-bottom-color: var(--silver-light); }
+input[type="text"]::placeholder { color: rgba(200,216,228,0.2); }
+input[type="text"]:focus { border-bottom-color: #C8D8E4; }
 
-.auto-field {
+.auto-value {
   padding: 10px 0;
-  font-family: var(--fs);
   font-size: 11px;
   font-weight: 300;
-  letter-spacing: 0.5px;
-  color: var(--silver-mid);
+  color: #A8BDC9;
   border-bottom: 1px solid rgba(138,159,180,0.12);
 }
 
-/* Signatory block */
 .sig-block {
-  padding: 14px 0 12px;
+  padding: 12px 0 10px;
   border-bottom: 1px solid rgba(138,159,180,0.12);
 }
-.sig-block-script {
-  font-size: 20px;
-  color: var(--silver-light);
-  line-height: 1;
-  margin-bottom: 5px;
-}
 .sig-block-name {
-  font-size: 8px;
-  font-weight: 400;
-  color: var(--silver-mid);
-  margin-bottom: 2px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 22px;
+  color: #C8D8E4;
+  margin-bottom: 4px;
 }
 .sig-block-title {
   font-size: 7px;
-  font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--silver-dim);
+  color: #4E6275;
 }
 
-/* Buttons */
 .btn-preview {
   width: 100%;
-  margin-top: 32px;
+  margin-top: 28px;
   padding: 14px;
   background: transparent;
-  border: 1px solid rgba(197,208,220,0.28);
-  font-family: var(--fs);
-  font-size: 8.5px;
-  font-weight: 400;
+  border: 1px solid rgba(200,216,228,0.28);
+  font-family: 'Jost', sans-serif;
+  font-size: 8px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--silver-light);
+  color: #C8D8E4;
   cursor: pointer;
   transition: all 0.2s;
 }
 .btn-preview:hover {
-  background: rgba(197,208,220,0.06);
-  border-color: var(--silver-light);
-  color: var(--white);
+  background: rgba(200,216,228,0.06);
+  border-color: #C8D8E4;
 }
 
-.btn-download {
+.btn-export {
   width: 100%;
   margin-top: 10px;
   padding: 14px;
-  background: var(--silver-light);
+  background: #C8D8E4;
   border: none;
-  font-family: var(--fs);
-  font-size: 8.5px;
-  font-weight: 500;
+  font-family: 'Jost', sans-serif;
+  font-size: 8px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--navy-deep);
+  color: #0D1B26;
   cursor: pointer;
+  font-weight: 500;
   transition: background 0.2s;
 }
-.btn-download:hover { background: var(--white); }
+.btn-export:hover { background: #fff; }
 
-.panel-note {
-  margin-top: 16px;
-  font-size: 9.5px;
-  color: var(--silver-dim);
+.note {
+  margin-top: 14px;
+  font-size: 9px;
+  color: #4E6275;
   line-height: 1.8;
 }
 
-/* ─── RIGHT STAGE ─── */
 .stage {
-  background: var(--navy-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px 44px;
-  position: relative;
-  overflow: hidden;
-}
-.stage::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 65%; height: 100%;
-  background: radial-gradient(ellipse at 80% 20%, rgba(138,159,180,0.05) 0%, transparent 60%);
-  pointer-events: none;
+  padding: 48px 40px;
 }
 
-/* ─── CERTIFICATE ─── */
 .cert-wrap {
-  position: relative;
   width: 100%;
-  max-width: 700px;
+  max-width: 680px;
+  position: relative;
 }
+
 .cert-wrap::before {
   content: '';
-  position: absolute; inset: -1px;
-  background: linear-gradient(135deg,
-    rgba(200,216,228,0.28),
-    rgba(138,159,180,0.07),
-    rgba(200,216,228,0.20));
-  z-index: 0;
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(200,216,228,0.25), rgba(138,159,180,0.06), rgba(200,216,228,0.18));
 }
 
 .cert {
   position: relative;
-  z-index: 1;
   background: #EDF4F9;
-  padding: 52px 64px 46px;
+  padding: 52px 60px 44px;
   text-align: center;
-  color: var(--navy-deep);
+  color: #0D1B26;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.cert.visible { opacity: 1; transform: translateY(0); }
+.cert.show { opacity: 1; transform: translateY(0); }
 
 .cert::before {
   content: '';
-  position: absolute; inset: 18px;
-  border: 1px solid rgba(42,74,107,0.2);
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(42,74,107,0.14);
   pointer-events: none;
 }
 .cert::after {
   content: '';
-  display: none;
-}
-.cert-blue-bot {
   position: absolute;
-  bottom: 0; left: 0; right: 0; height: 4px;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
   background: linear-gradient(90deg, transparent, #2A4A6B 20%, #4A7FA8 50%, #2A4A6B 80%, transparent);
 }
 
-.c-corner {
+.corner {
   position: absolute;
-  width: 22px; height: 22px;
-  border-color: #2A4A6B; border-style: solid; opacity: 0.55;
+  width: 20px; height: 20px;
+  border-color: #2A4A6B;
+  border-style: solid;
+  opacity: 0.45;
 }
-.c-corner.tl { top: 22px; left: 22px; border-width: 1px 0 0 1px; }
-.c-corner.tr { top: 22px; right: 22px; border-width: 1px 1px 0 0; }
-.c-corner.bl { bottom: 22px; left: 22px; border-width: 0 0 1px 1px; }
-.c-corner.br { bottom: 22px; right: 22px; border-width: 0 1px 1px 0; }
+.tl { top: 20px; left: 20px; border-width: 1px 0 0 1px; }
+.tr { top: 20px; right: 20px; border-width: 1px 1px 0 0; }
+.bl { bottom: 20px; left: 20px; border-width: 0 0 1px 1px; }
+.br { bottom: 20px; right: 20px; border-width: 0 1px 1px 0; }
 
+.c-org { font-size: 6px; letter-spacing: 5px; text-transform: uppercase; color: #2A4A6B; margin-bottom: 8px; }
+.c-fom { font-size: 20px; font-weight: 500; letter-spacing: 10px; color: #1A2B3C; margin-bottom: 3px; }
+.c-fom-sub { font-size: 6.5px; letter-spacing: 4px; text-transform: uppercase; color: #4A6480; margin-bottom: 18px; }
+.c-fom-sub em { font-family: 'Libre Baskerville', serif; font-style: italic; }
+.c-presents { font-size: 7.5px; letter-spacing: 3px; text-transform: uppercase; color: #2A4A6B; margin-bottom: 8px; }
 
+.c-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 50px;
+  font-style: italic;
+  color: #0D1B26;
+  line-height: 1.05;
+  min-height: 58px;
+  transition: all 0.3s;
+}
+.c-name.empty { font-size: 24px; color: #C8D8E4; opacity: 0.3; }
 
-.cert-org {
-  font-size: 6.5px; font-weight: 400; letter-spacing: 5px;
-  text-transform: uppercase; color: #1E3047; margin-bottom: 12px;
-}
+.c-rule { display: flex; align-items: center; gap: 12px; margin: 18px auto; max-width: 260px; }
+.c-rule-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #2A4A6B); }
+.c-rule-line.r { background: linear-gradient(90deg, #2A4A6B, transparent); }
+.c-rule-diamond { width: 5px; height: 5px; background: #2A4A6B; transform: rotate(45deg); }
 
-/* FOM logo image */
-.cert-logo {
-  width: 110px;
-  height: auto;
-  margin-bottom: 18px;
-  opacity: 0.92;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  z-index: 2;
-}
-.cert-presents {
-  font-size: 8px; font-weight: 300; letter-spacing: 3px;
-  text-transform: uppercase; color: #2A4A6B; margin-bottom: 10px;
-}
+.c-prog { font-size: 7.5px; letter-spacing: 5px; text-transform: uppercase; color: #1E3047; margin-bottom: 4px; }
+.c-prog-sub { font-family: 'Libre Baskerville', serif; font-size: 12px; font-style: italic; color: #4A6480; margin-bottom: 12px; }
+.c-date { font-size: 9px; font-weight: 300; letter-spacing: 2.5px; color: #2A4A6B; margin-bottom: 28px; }
 
-.cert-name {
-  font-family: var(--fd);
-  font-size: 54px; font-weight: 400; font-style: italic;
-  color: var(--navy-deep); line-height: 1.05;
-  min-height: 60px;
-  transition: all 0.3s ease;
-}
-.cert-name.placeholder {
-  font-size: 26px; color: var(--silver-light); opacity: 0.3;
-}
+.c-sig { text-align: center; }
+.c-sig-script { font-family: 'Great Vibes', cursive; font-size: 24px; color: #1A2B3C; line-height: 1; margin-bottom: 5px; }
+.c-sig-line { width: 120px; height: 1px; background: rgba(42,74,107,0.2); margin: 0 auto 7px; }
+.c-sig-printed { font-size: 7px; color: #1E3047; margin-bottom: 3px; }
+.c-sig-title { font-size: 5.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #4A6480; }
 
-.cert-rule {
-  display: flex; align-items: center; gap: 14px;
-  margin: 20px auto; max-width: 280px;
-}
-.cert-rule-line {
-  flex: 1; height: 1px;
-  background: linear-gradient(90deg, transparent, #2A4A6B);
-}
-.cert-rule-line.r {
-  background: linear-gradient(90deg, #2A4A6B, transparent);
-}
-.cert-rule-diamond {
-  width: 5px; height: 5px; background: #2A4A6B;
-  transform: rotate(45deg); flex-shrink: 0;
-}
-
-.cert-program {
-  font-size: 8px; font-weight: 400; letter-spacing: 5.5px;
-  text-transform: uppercase; color: #1E3047; margin-bottom: 5px;
-}
-.cert-program-sub {
-  font-family: var(--fd);
-  font-size: 12.5px; font-style: italic;
-  color: #4A6480; margin-bottom: 16px;
-}
-.cert-date {
-  font-size: 9.5px; font-weight: 300; letter-spacing: 2.5px;
-  color: #2A4A6B; margin-bottom: 28px; min-height: 16px;
-}
-
-/* Signature */
-.cert-sig { text-align: center; }
-
-/* 4 font options — toggled by class on cert-sig-script */
-.cert-sig-script {
-  font-size: 19px;
-  color: #1A2B3C;
-  line-height: 1.1; margin-bottom: 5px;
-  letter-spacing: 0.3px;
-}
-.cert-sig-script.font-dancing  { font-family: 'Dancing Script', cursive; }
-.cert-sig-script.font-greatvibes { font-family: 'Great Vibes', cursive; font-size: 26px; }
-.cert-sig-script.font-pinyon   { font-family: 'Pinyon Script', cursive; font-size: 26px; }
-.cert-sig-script.font-allura   { font-family: 'Allura', cursive; font-size: 24px; }
-
-.cert-sig-line {
-  width: 130px; height: 1px;
-  background: rgba(42,74,107,0.22);
-  margin: 0 auto 7px;
-}
-.cert-sig-name {
-  font-size: 7px; font-weight: 400;
-  color: #1E3047; margin-bottom: 3px; letter-spacing: 0.3px;
-}
-.cert-sig-title {
-  font-size: 6px; font-weight: 300; letter-spacing: 1.5px;
-  text-transform: uppercase; color: #4A6480;
-}
-
-/* Font picker in panel */
-.font-picker {
-  display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;
-}
-.font-opt {
-  flex: 1; min-width: 44%;
-  padding: 8px 6px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(138,159,180,0.2);
-  cursor: pointer;
-  text-align: center;
-  transition: border-color 0.2s, background 0.2s;
-  font-size: 13px;
-  color: #C8D8E4;
-  line-height: 1.1;
-}
-.font-opt small {
-  display: block;
-  font-family: 'Jost', sans-serif;
-  font-size: 7px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #4E6275;
-  margin-top: 3px;
-}
-.font-opt.active {
-  border-color: #C8D8E4;
-  background: rgba(200,216,228,0.07);
-}
-.font-opt:hover { border-color: #A8BDC9; }
-
-.font-opt.fo-dancing  { font-family: 'Dancing Script', cursive; }
-.font-opt.fo-greatvibes { font-family: 'Great Vibes', cursive; font-size: 16px; }
-.font-opt.fo-pinyon   { font-family: 'Pinyon Script', cursive; font-size: 16px; }
-.font-opt.fo-allura   { font-family: 'Allura', cursive; font-size: 15px; }
-
-/* Blue footer band on cert */
-.cert-blue-footer {
-  position: absolute;
-  bottom: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent, #2A4A6B 20%, #4A7FA8 50%, #2A4A6B 80%, transparent);
-}
-
-/* Placeholder */
-.cert-placeholder-msg {
+.placeholder {
   position: absolute; inset: 0;
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 10px;
-  background: rgba(242,245,249,0.94);
-  transition: opacity 0.4s ease;
-  pointer-events: none; z-index: 2;
+  align-items: center; justify-content: center;
+  gap: 10px;
+  background: rgba(237,244,249,0.95);
+  transition: opacity 0.4s;
+  z-index: 2;
 }
-.cert-placeholder-msg.hidden { opacity: 0; }
-.cert-placeholder-msg p {
-  font-size: 9px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--silver);
-}
-.cert-placeholder-msg span { font-size: 18px; color: var(--silver-light); opacity: 0.4; }
+.placeholder.hide { opacity: 0; pointer-events: none; }
+.placeholder span { font-size: 18px; color: #C8D8E4; opacity: 0.4; }
+.placeholder p { font-size: 8.5px; letter-spacing: 3px; text-transform: uppercase; color: #7A95AB; }
 
-@media (max-width: 820px) {
-  .shell { grid-template-columns: 1fr; }
-  .stage { padding: 36px 20px; }
-  .cert { padding: 40px 28px 36px; }
-  .cert-name { font-size: 38px; }
+@media (max-width: 800px) {
+  body { grid-template-columns: 1fr; }
+  .stage { padding: 32px 20px; }
+  .cert { padding: 36px 28px 32px; }
+  .c-name { font-size: 36px; }
 }
 ```
 
@@ -473,232 +289,158 @@ html, body {
 </head>
 <body>
 
-<div class="shell">
+<aside class="panel">
+  <p class="eyebrow">Capri Holdings · Learning &amp; Development</p>
 
-  <aside class="panel">
-    <p class="panel-eyebrow">Capri Holdings · Learning &amp; Development</p>
-
-```
-<div class="wordmark">
-  <span class="wordmark-fom">F O M</span>
-  <div class="wordmark-sub"><em>Foundations</em> &nbsp;of&nbsp; Management</div>
-</div>
-
-<div class="panel-divider"></div>
-
-<h1 class="panel-heading">Certificate of<br>Completion</h1>
-<p class="panel-sub">Enter your name below. Your certificate will be automatically signed and dated.</p>
-
-<div class="form-group">
-  <label class="form-label" for="input-name">Your Full Name</label>
-  <input class="form-input" type="text" id="input-name"
-    placeholder="First and last name"
-    autocomplete="off" oninput="liveUpdate()" />
-</div>
-
-<div class="form-group">
-  <div class="form-label">Date</div>
-  <div class="auto-field" id="display-date">Loading...</div>
-</div>
-
-<div class="form-group">
-  <div class="form-label">Signed By</div>
-  <div class="sig-block">
-    <div class="sig-block-script" id="panel-sig-preview" style="font-family:'Dancing Script',cursive;">Kristin Corcoran</div>
-    <div class="sig-block-name">Kristin Corcoran</div>
-    <div class="sig-block-title">VP, Global Learning &amp; Development</div>
+  <div class="wordmark">
+    <span class="wordmark-fom">F O M</span>
+    <span class="wordmark-sub"><em>Foundations</em> &nbsp;of&nbsp; Management</span>
   </div>
 
-</div>
+  <div class="divider"></div>
 
-<button class="btn-preview" onclick="generateCert()">Preview Certificate</button>
-<button class="btn-download" onclick="downloadCert()">Export as PDF</button>
+  <h1>Certificate of<br>Completion</h1>
+  <p class="panel-sub">Enter your name below. Your certificate will be automatically signed and dated.</p>
 
-<p class="panel-note">
-  A print-ready page will open automatically.<br>Set destination to <strong>Save as PDF</strong> and print.
-</p>
+  <div class="field-group">
+    <div class="field-label">Your Full Name</div>
+    <input type="text" id="grad-name" placeholder="First and last name" oninput="liveUpdate()" />
+  </div>
+
+  <div class="field-group">
+    <div class="field-label">Date</div>
+    <div class="auto-value" id="auto-date"></div>
+  </div>
+
+  <div class="field-group">
+    <div class="field-label">Signed By</div>
+    <div class="sig-block">
+      <div class="sig-block-name">Kristin Corcoran</div>
+      <div class="sig-block-title">VP, Global Learning &amp; Development</div>
+    </div>
+  </div>
+
+<button class="btn-preview" onclick="showCert()">Preview Certificate</button>
+<button class="btn-export" onclick="exportCert()">Export as PDF</button>
+
+  <p class="note">A new tab will open with your certificate.<br>Use <strong>Print &rarr; Save as PDF</strong> to download.</p>
+</aside>
+
+<main class="stage">
+  <div class="cert-wrap">
+    <div class="placeholder" id="placeholder">
+      <span>◇</span>
+      <p>Enter your name to preview</p>
+    </div>
+
 ```
+<div class="cert" id="cert">
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
 
-  </aside>
+  <div class="c-org">Capri Holdings &nbsp;·&nbsp; Learning &amp; Development</div>
+  <div class="c-fom">F &nbsp; O &nbsp; M</div>
+  <div class="c-fom-sub"><em>Foundations</em> &nbsp;of&nbsp; Management</div>
+  <div class="c-presents">This certificate is awarded to</div>
+  <div class="c-name empty" id="cert-name">Your Name</div>
 
-  <main class="stage">
-    <div class="cert-wrap">
-      <div class="cert-placeholder-msg" id="placeholder">
-        <span>◇</span>
-        <p>Enter your name to preview</p>
-      </div>
+  <div class="c-rule">
+    <div class="c-rule-line"></div>
+    <div class="c-rule-diamond"></div>
+    <div class="c-rule-line r"></div>
+  </div>
 
-```
-  <div class="cert" id="cert">
-    <div class="c-corner tl"></div>
-    <div class="c-corner tr"></div>
-    <div class="c-corner bl"></div>
-    <div class="c-corner br"></div>
+  <div class="c-prog">Foundations of Management</div>
+  <div class="c-prog-sub">in recognition of successful completion</div>
+  <div class="c-date" id="cert-date"></div>
 
-    <div style="position:relative;z-index:1;width:100%;" class="cert-content-inner">
-    <div class="cert-org">CAPRI &nbsp;·&nbsp; LEARNING &amp; DEVELOPMENT</div>
-    <div class="cert-wordmark">
-      <div class="cert-wordmark-fom">F &nbsp; O &nbsp; M</div>
-      <div class="cert-wordmark-sub"><em>Foundations</em> &nbsp;of&nbsp; Management</div>
-    </div>
-    
-    <div class="cert-presents">This certificate is awarded to</div>
-    <div class="cert-name placeholder" id="cert-name">Your Name</div>
-
-    <div class="cert-rule">
-      <div class="cert-rule-line"></div>
-      <div class="cert-rule-diamond"></div>
-      <div class="cert-rule-line r"></div>
-    </div>
-
-    <div class="cert-program">Foundations of Management</div>
-    <div class="cert-program-sub">in recognition of successful completion</div>
-    <div class="cert-date" id="cert-date"></div>
-
-    <div class="cert-sig">
-      <div class="cert-sig-script font-dancing" id="cert-sig-el">Kristin Corcoran</div>
-      <div class="cert-sig-line"></div>
-      <div class="cert-sig-name">Kristin Corcoran</div>
-      <div class="cert-sig-title">VP, Global Learning &amp; Development</div>
-    </div>
-    </div><!-- /cert-content-inner -->
-    <div class="cert-blue-bot"></div>
+  <div class="c-sig">
+    <div class="c-sig-script">Kristin Corcoran</div>
+    <div class="c-sig-line"></div>
+    <div class="c-sig-printed">Kristin Corcoran</div>
+    <div class="c-sig-title">VP, Global Learning &amp; Development</div>
   </div>
 </div>
 ```
 
-  </main>
-
-</div>
+  </div>
+</main>
 
 <script>
-  // Auto date on load
-  const today = new Date();
-  const formatted = today.toLocaleDateString('en-US', {
-    year: 'numeric', month: 'long', day: 'numeric'
-  });
-  document.getElementById('display-date').textContent = formatted;
-  document.getElementById('cert-date').textContent = formatted;
+  var today = new Date();
+  var dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById('auto-date').textContent = dateStr;
+  document.getElementById('cert-date').textContent = dateStr;
 
-  let revealed = false;
-  let currentFont = 'dancing';
-
-  // Font definitions — clean, no quote escaping issues
-  const fontFamilies = {
-    dancing:    { css: 'Dancing Script, cursive',  size: '22px' },
-    greatvibes: { css: 'Great Vibes, cursive',     size: '30px' },
-    pinyon:     { css: 'Pinyon Script, cursive',   size: '30px' },
-    allura:     { css: 'Allura, cursive',          size: '28px' },
-  };
-
-  function setFont(key) {
-    currentFont = key;
-    const el = document.getElementById('cert-sig-el');
-    const panel = document.getElementById('panel-sig-preview');
-    const f = fontFamilies[key];
-    el.className = 'cert-sig-script font-' + key;
-    panel.style.fontFamily = f.css;
-    document.querySelectorAll('.font-opt').forEach(b => b.classList.remove('active'));
-    const btn = document.querySelector('.fo-' + key);
-    if (btn) btn.classList.add('active');
-  }
+  var shown = false;
 
   function liveUpdate() {
-    if (revealed) updateContent();
+    if (shown) updateName();
   }
 
-  function updateContent() {
-    const name = document.getElementById('input-name').value.trim();
-    const el = document.getElementById('cert-name');
+  function updateName() {
+    var name = document.getElementById('grad-name').value.trim();
+    var el = document.getElementById('cert-name');
     if (name) {
       el.textContent = name;
-      el.classList.remove('placeholder');
+      el.classList.remove('empty');
     } else {
       el.textContent = 'Your Name';
-      el.classList.add('placeholder');
+      el.classList.add('empty');
     }
   }
 
-  function generateCert() {
-    updateContent();
-    document.getElementById('placeholder').classList.add('hidden');
-    document.getElementById('cert').classList.add('visible');
-    revealed = true;
+  function showCert() {
+    updateName();
+    document.getElementById('placeholder').classList.add('hide');
+    document.getElementById('cert').classList.add('show');
+    shown = true;
   }
 
-  function downloadCert() {
-    try {
-      const name = document.getElementById('input-name').value.trim() || 'Graduate';
-      const f = fontFamilies[currentFont] || fontFamilies.dancing;
+  function exportCert() {
+    var name = document.getElementById('grad-name').value.trim();
+    if (!name) { alert('Please enter your name first.'); return; }
 
-      const certHTML = [
-        '<!DOCTYPE html><html><head><meta charset="UTF-8">',
-        '<title>FOM Certificate</title>',
-        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Jost:wght@200;300;400;500&family=Dancing+Script:wght@600&family=Great+Vibes&family=Pinyon+Script&family=Allura&display=swap">',
-        '<style>',
-        '@page{size:landscape;margin:0.3in}',
-        '*{box-sizing:border-box;margin:0;padding:0}',
-        'body{font-family:Jost,sans-serif;background:#EDF4F9;display:flex;align-items:center;justify-content:center;min-height:100vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}',
-        '.cert{width:100%;max-width:920px;background:#EDF4F9;border:1px solid rgba(42,74,107,0.2);padding:52px 80px 44px;text-align:center;color:#0D1B26;position:relative}',
-        '.cert::before{content:"";position:absolute;inset:16px;border:1px solid rgba(42,74,107,0.14)}',
-        '.bot{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#2A4A6B 20%,#4A7FA8 50%,#2A4A6B 80%,transparent)}',
-        '.corner{position:absolute;width:22px;height:22px;border-color:#2A4A6B;border-style:solid;opacity:.5}',
-        '.tl{top:20px;left:20px;border-width:1px 0 0 1px}.tr{top:20px;right:20px;border-width:1px 1px 0 0}',
-        '.bl{bottom:20px;left:20px;border-width:0 0 1px 1px}.br{bottom:20px;right:20px;border-width:0 1px 1px 0}',
-        '.org{font-size:6.5px;font-weight:400;letter-spacing:5px;text-transform:uppercase;color:#1E3047;margin-bottom:8px}',
-        '.wm{font-size:22px;font-weight:500;letter-spacing:12px;color:#1A2B3C;margin-bottom:3px}',
-        '.wm-sub{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:#4A6480;margin-bottom:16px}',
-        '.wm-sub em{font-family:"Libre Baskerville",serif;font-style:italic}',
-        '.presents{font-size:8px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:#2A4A6B;margin-bottom:8px}',
-        '.name{font-family:"Libre Baskerville",serif;font-size:52px;font-weight:400;font-style:italic;color:#0D1B26;line-height:1.05}',
-        '.rule{display:flex;align-items:center;gap:14px;margin:16px auto;max-width:280px}',
-        '.rl{flex:1;height:1px;background:linear-gradient(90deg,transparent,#2A4A6B)}',
-        '.rr{flex:1;height:1px;background:linear-gradient(90deg,#2A4A6B,transparent)}',
-        '.rd{width:5px;height:5px;background:#2A4A6B;transform:rotate(45deg)}',
-        '.prog{font-size:8px;font-weight:400;letter-spacing:5.5px;text-transform:uppercase;color:#1E3047;margin-bottom:4px}',
-        '.prog-sub{font-family:"Libre Baskerville",serif;font-size:12px;font-style:italic;color:#4A6480;margin-bottom:12px}',
-        '.date{font-size:9.5px;font-weight:300;letter-spacing:2.5px;color:#2A4A6B;margin-bottom:24px}',
-        '.sig{text-align:center}',
-        '.sig-script{font-family:' + f.css + ';font-size:' + f.size + ';color:#1A2B3C;line-height:1;margin-bottom:5px}',
-        '.sig-line{width:130px;height:1px;background:rgba(42,74,107,.22);margin:0 auto 7px}',
-        '.sig-name{font-size:7px;font-weight:400;color:#1E3047;margin-bottom:3px}',
-        '.sig-title{font-size:6px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:#4A6480}',
-        '@media screen{.save-btn{position:fixed;bottom:28px;right:28px;padding:13px 26px;background:#1A2B3C;color:#fff;border:none;font-family:Jost,sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}}',
-        '@media print{.save-btn{display:none}body{background:#EDF4F9}}',
-        '</style></head><body>',
+    var fonts = 'https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap';
+
+    var css = '@page{size:landscape;margin:0}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Jost,sans-serif;background:#EDF4F9;display:flex;align-items:center;justify-content:center;min-height:100vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}.cert{position:relative;width:960px;min-height:600px;background:#EDF4F9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 80px;color:#0D1B26;border:1px solid rgba(42,74,107,0.2)}.cert::before{content:"";position:absolute;inset:18px;border:1px solid rgba(42,74,107,0.14)}.cert::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#2A4A6B 20%,#4A7FA8 50%,#2A4A6B 80%,transparent)}.corner{position:absolute;width:20px;height:20px;border-color:#2A4A6B;border-style:solid;opacity:.45}.tl{top:22px;left:22px;border-width:1px 0 0 1px}.tr{top:22px;right:22px;border-width:1px 1px 0 0}.bl{bottom:22px;left:22px;border-width:0 0 1px 1px}.br{bottom:22px;right:22px;border-width:0 1px 1px 0}.org{font-size:6px;letter-spacing:5px;text-transform:uppercase;color:#2A4A6B;margin-bottom:8px}.fom{font-size:20px;font-weight:500;letter-spacing:10px;color:#1A2B3C;margin-bottom:3px}.fom-sub{font-size:6.5px;letter-spacing:4px;text-transform:uppercase;color:#4A6480;margin-bottom:18px}.fom-sub em{font-family:"Libre Baskerville",serif;font-style:italic}.presents{font-size:7.5px;letter-spacing:3px;text-transform:uppercase;color:#2A4A6B;margin-bottom:8px}.name{font-family:"Libre Baskerville",serif;font-size:52px;font-style:italic;color:#0D1B26;line-height:1.05}.rule{display:flex;align-items:center;gap:12px;margin:16px auto;max-width:260px}.rl{flex:1;height:1px;background:linear-gradient(90deg,transparent,#2A4A6B)}.rr{flex:1;height:1px;background:linear-gradient(90deg,#2A4A6B,transparent)}.rd{width:5px;height:5px;background:#2A4A6B;transform:rotate(45deg)}.prog{font-size:7.5px;letter-spacing:5px;text-transform:uppercase;color:#1E3047;margin-bottom:4px}.prog-sub{font-family:"Libre Baskerville",serif;font-size:12px;font-style:italic;color:#4A6480;margin-bottom:12px}.date{font-size:9px;font-weight:300;letter-spacing:2.5px;color:#2A4A6B;margin-bottom:26px}.sig{text-align:center}.sig-s{font-family:"Great Vibes",cursive;font-size:24px;color:#1A2B3C;line-height:1;margin-bottom:5px}.sig-l{width:120px;height:1px;background:rgba(42,74,107,.2);margin:0 auto 7px}.sig-n{font-size:7px;color:#1E3047;margin-bottom:3px}.sig-t{font-size:5.5px;letter-spacing:1.5px;text-transform:uppercase;color:#4A6480}@media print{.no-print{display:none}}@media screen{.no-print{position:fixed;top:20px;right:20px;display:flex;gap:10px;z-index:999}.pbtn{padding:12px 24px;border:none;font-family:Jost,sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}.pbtn-save{background:#1A2B3C;color:#fff}.pbtn-close{background:#EDF4F9;color:#1A2B3C;border:1px solid #2A4A6B}}';
+
+    var body = '<div class="cert">'
+      + '<div class="corner tl"></div><div class="corner tr"></div>'
+      + '<div class="corner bl"></div><div class="corner br"></div>'
+      + '<div class="org">Capri Holdings &middot; Learning &amp; Development</div>'
+      + '<div class="fom">F &nbsp; O &nbsp; M</div>'
+      + '<div class="fom-sub"><em>Foundations</em> &nbsp;of&nbsp; Management</div>'
+      + '<div class="presents">This certificate is awarded to</div>'
+      + '<div class="name">' + name + '</div>'
+      + '<div class="rule"><div class="rl"></div><div class="rd"></div><div class="rr"></div></div>'
+      + '<div class="prog">Foundations of Management</div>'
+      + '<div class="prog-sub">in recognition of successful completion</div>'
+      + '<div class="date">' + dateStr + '</div>'
+      + '<div class="sig">'
+      + '<div class="sig-s">Kristin Corcoran</div>'
+      + '<div class="sig-l"></div>'
+      + '<div class="sig-n">Kristin Corcoran</div>'
+      + '<div class="sig-t">VP, Global Learning &amp; Development</div>'
+      + '</div></div>';
+
+    var printBtns = '<div class="no-print">'
+      + '<button class="pbtn pbtn-save" onclick="window.print()">Save as PDF</button>'
+      + '</div>';
+
+    var full = '<!DOCTYPE html><html><head><meta charset="UTF-8">'
+      + '<link rel="stylesheet" href="' + fonts + '">'
+      + '<style>' + css + '</style></head><body>'
 
 ```
-    '<div class="cert">',
-    '<div class="corner tl"></div><div class="corner tr"></div>',
-    '<div class="corner bl"></div><div class="corner br"></div>',
-    '<div class="bot"></div>',
-    '<div class="org">CAPRI &middot; LEARNING &amp; DEVELOPMENT</div>',
-    '<div class="wm">F &nbsp; O &nbsp; M</div>',
-    '<div class="wm-sub"><em>Foundations</em> &nbsp;of&nbsp; Management</div>',
-    '<div class="presents">This certificate is awarded to</div>',
-    '<div class="name">' + name + '</div>',
-    '<div class="rule"><div class="rl"></div><div class="rd"></div><div class="rr"></div></div>',
-    '<div class="prog">Foundations of Management</div>',
-    '<div class="prog-sub">in recognition of successful completion</div>',
-    '<div class="date">' + formatted + '</div>',
-    '<div class="sig">',
-    '<div class="sig-script">Kristin Corcoran</div>',
-    '<div class="sig-line"></div>',
-    '<div class="sig-name">Kristin Corcoran</div>',
-    '<div class="sig-title">VP, Global Learning &amp; Development</div>',
-    '</div></div>',
-    '<button class="save-btn" onclick="window.print()">Save as PDF</button>',
-    '</body></html>'
-  ].join('');
+  + body + printBtns + '</body></html>';
 
-  const w = window.open('', '_blank');
-  w.document.open();
-  w.document.write(certHTML);
-  w.document.close();
-
-} catch(err) {
-  alert('Error: ' + err.message);
-}
+// Replace entire page content — no popup needed
+document.open();
+document.write(full);
+document.close();
 ```
 
 }
