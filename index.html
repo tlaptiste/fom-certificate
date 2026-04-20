@@ -550,14 +550,16 @@ input[type="text"]:focus { border-bottom-color: #C8D8E4; }
 
   + '</head><body>' + body + '</body></html>';
 
-var encoded = 'data:text/html;charset=utf-8,' + encodeURIComponent(full);
-var a = document.createElement('a');
-a.href = encoded;
-a.target = '_blank';
-a.rel = 'noopener';
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
+var w = window.open('about:blank', '_blank');
+if (w) {
+ w.document.open();
+ w.document.write(full);
+ w.document.close();
+} else {
+ document.open();
+ document.write(full);
+ document. Close();
+}
 
 }
 </script>
