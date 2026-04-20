@@ -630,13 +630,10 @@ html, body {
     try {
       const name = document.getElementById('input-name').value.trim() || 'Graduate';
       const f = fontFamilies[currentFont] || fontFamilies.dancing;
-      const sigFamily = f.css;
-      const sigSize = f.size;
-      const safeDate = formatted;
 
-      const lines = [
+      const certHTML = [
         '<!DOCTYPE html><html><head><meta charset="UTF-8">',
-        '<title>FOM Certificate — ' + name + '</title>',
+        '<title>FOM Certificate</title>',
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Jost:wght@200;300;400;500&family=Dancing+Script:wght@600&family=Great+Vibes&family=Pinyon+Script&family=Allura&display=swap">',
         '<style>',
         '@page{size:landscape;margin:0.3in}',
@@ -662,11 +659,11 @@ html, body {
         '.prog-sub{font-family:"Libre Baskerville",serif;font-size:12px;font-style:italic;color:#4A6480;margin-bottom:12px}',
         '.date{font-size:9.5px;font-weight:300;letter-spacing:2.5px;color:#2A4A6B;margin-bottom:24px}',
         '.sig{text-align:center}',
-        '.sig-script{font-family:' + sigFamily + ';font-size:' + sigSize + ';color:#1A2B3C;line-height:1;margin-bottom:5px}',
+        '.sig-script{font-family:' + f.css + ';font-size:' + f.size + ';color:#1A2B3C;line-height:1;margin-bottom:5px}',
         '.sig-line{width:130px;height:1px;background:rgba(42,74,107,.22);margin:0 auto 7px}',
         '.sig-name{font-size:7px;font-weight:400;color:#1E3047;margin-bottom:3px}',
         '.sig-title{font-size:6px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:#4A6480}',
-        '@media screen{.save-btn{position:fixed;bottom:28px;right:28px;padding:13px 26px;background:#1A2B3C;color:#fff;border:none;font-family:Jost,sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.3)}}',
+        '@media screen{.save-btn{position:fixed;bottom:28px;right:28px;padding:13px 26px;background:#1A2B3C;color:#fff;border:none;font-family:Jost,sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}}',
         '@media print{.save-btn{display:none}body{background:#EDF4F9}}',
         '</style></head><body>',
 
@@ -683,7 +680,7 @@ html, body {
     '<div class="rule"><div class="rl"></div><div class="rd"></div><div class="rr"></div></div>',
     '<div class="prog">Foundations of Management</div>',
     '<div class="prog-sub">in recognition of successful completion</div>',
-    '<div class="date">' + safeDate + '</div>',
+    '<div class="date">' + formatted + '</div>',
     '<div class="sig">',
     '<div class="sig-script">Kristin Corcoran</div>',
     '<div class="sig-line"></div>',
@@ -692,35 +689,12 @@ html, body {
     '</div></div>',
     '<button class="save-btn" onclick="window.print()">Save as PDF</button>',
     '</body></html>'
-  ];
+  ].join('');
 
-  const certHTML = lines.join('');
-
-  // Write to hidden iframe — no popup, no block
-  let iframe = document.getElementById('print-frame');
-  if (!iframe) {
-    iframe = document.createElement('iframe');
-    iframe.id = 'print-frame';
-    iframe.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:9999;background:#fff';
-    document.body.appendChild(iframe);
-  }
-  iframe.srcdoc = certHTML;
-
-  // Add a close button overlay
-  let closeBtn = document.getElementById('close-print');
-  if (!closeBtn) {
-    closeBtn = document.createElement('button');
-    closeBtn.id = 'close-print';
-    closeBtn.textContent = '✕ Back';
-    closeBtn.style.cssText = 'position:fixed;top:20px;left:20px;z-index:10000;padding:10px 20px;background:#1A2B3C;color:#fff;border:none;font-family:Jost,sans-serif;font-size:11px;letter-spacing:2px;cursor:pointer';
-    closeBtn.onclick = function() {
-      iframe.style.display = 'none';
-      closeBtn.style.display = 'none';
-    };
-    document.body.appendChild(closeBtn);
-  }
-  iframe.style.display = 'block';
-  closeBtn.style.display = 'block';
+  const w = window.open('', '_blank');
+  w.document.open();
+  w.document.write(certHTML);
+  w.document.close();
 
 } catch(err) {
   alert('Error: ' + err.message);
