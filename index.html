@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -498,7 +498,7 @@ html, body {
 
 <div class="form-group">
   <div class="form-label">Date</div>
-  <div class="auto-field" id="display-date"></div>
+  <div class="auto-field" id="display-date">Loading...</div>
 </div>
 
 <div class="form-group">
@@ -630,17 +630,19 @@ html, body {
     try {
       const name = document.getElementById('input-name').value.trim() || 'Graduate';
       const f = fontFamilies[currentFont] || fontFamilies.dancing;
+      const sigFamily = f.css;
+      const sigSize = f.size;
+      const safeDate = formatted;
 
-      // Build cert HTML by concatenation - no template literals, no Blob
-      const H = [
+      const lines = [
         '<!DOCTYPE html><html><head><meta charset="UTF-8">',
-        '<title>FOM Certificate</title>',
+        '<title>FOM Certificate — ' + name + '</title>',
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Jost:wght@200;300;400;500&family=Dancing+Script:wght@600&family=Great+Vibes&family=Pinyon+Script&family=Allura&display=swap">',
         '<style>',
-        '@page{size:landscape;margin:0}',
+        '@page{size:landscape;margin:0.3in}',
         '*{box-sizing:border-box;margin:0;padding:0}',
-        'body{font-family:Jost,sans-serif;background:#0D1B26;display:flex;align-items:center;justify-content:center;min-height:100vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}',
-        '.cert{width:960px;height:620px;background:#EDF4F9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 80px;color:#0D1B26;position:relative;border:1px solid rgba(42,74,107,0.2)}',
+        'body{font-family:Jost,sans-serif;background:#EDF4F9;display:flex;align-items:center;justify-content:center;min-height:100vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}',
+        '.cert{width:100%;max-width:920px;background:#EDF4F9;border:1px solid rgba(42,74,107,0.2);padding:52px 80px 44px;text-align:center;color:#0D1B26;position:relative}',
         '.cert::before{content:"";position:absolute;inset:16px;border:1px solid rgba(42,74,107,0.14)}',
         '.bot{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#2A4A6B 20%,#4A7FA8 50%,#2A4A6B 80%,transparent)}',
         '.corner{position:absolute;width:22px;height:22px;border-color:#2A4A6B;border-style:solid;opacity:.5}',
@@ -660,11 +662,12 @@ html, body {
         '.prog-sub{font-family:"Libre Baskerville",serif;font-size:12px;font-style:italic;color:#4A6480;margin-bottom:12px}',
         '.date{font-size:9.5px;font-weight:300;letter-spacing:2.5px;color:#2A4A6B;margin-bottom:24px}',
         '.sig{text-align:center}',
-        '.sig-script{font-family:' + f.css + ';font-size:' + f.size + ';color:#1A2B3C;line-height:1;margin-bottom:5px}',
+        '.sig-script{font-family:' + sigFamily + ';font-size:' + sigSize + ';color:#1A2B3C;line-height:1;margin-bottom:5px}',
         '.sig-line{width:130px;height:1px;background:rgba(42,74,107,.22);margin:0 auto 7px}',
         '.sig-name{font-size:7px;font-weight:400;color:#1E3047;margin-bottom:3px}',
         '.sig-title{font-size:6px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:#4A6480}',
-        '@media print{body{background:#EDF4F9}}',
+        '@media screen{.save-btn{position:fixed;bottom:28px;right:28px;padding:13px 26px;background:#1A2B3C;color:#fff;border:none;font-family:Jost,sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.3)}}',
+        '@media print{.save-btn{display:none}body{background:#EDF4F9}}',
         '</style></head><body>',
 
 ```
@@ -680,29 +683,45 @@ html, body {
     '<div class="rule"><div class="rl"></div><div class="rd"></div><div class="rr"></div></div>',
     '<div class="prog">Foundations of Management</div>',
     '<div class="prog-sub">in recognition of successful completion</div>',
-    '<div class="date">' + formatted + '</div>',
+    '<div class="date">' + safeDate + '</div>',
     '<div class="sig">',
     '<div class="sig-script">Kristin Corcoran</div>',
     '<div class="sig-line"></div>',
     '<div class="sig-name">Kristin Corcoran</div>',
     '<div class="sig-title">VP, Global Learning &amp; Development</div>',
     '</div></div>',
-    '<style>',
-    '@media screen{',
-    '.print-btn{position:fixed;bottom:32px;right:32px;padding:14px 28px;background:#1A2B3C;color:#fff;border:none;font-family:Jost,sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;z-index:999}',
-    '.print-btn:hover{background:#2A4A6B}',
-    '}',
-    '@media print{.print-btn{display:none}}',
-    '</style>',
-    '<button class="print-btn" onclick="window.print()">Save as PDF</button>',
-    '<scr'+'ipt>setTimeout(function(){window.print()},800)</scr'+'ipt>',
+    '<button class="save-btn" onclick="window.print()">Save as PDF</button>',
     '</body></html>'
-  ].join('');
+  ];
 
-  const w = window.open('', '_blank', 'width=1100,height=750');
-  w.document.open();
-  w.document.write(H);
-  w.document.close();
+  const certHTML = lines.join('');
+
+  // Write to hidden iframe — no popup, no block
+  let iframe = document.getElementById('print-frame');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.id = 'print-frame';
+    iframe.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:9999;background:#fff';
+    document.body.appendChild(iframe);
+  }
+  iframe.srcdoc = certHTML;
+
+  // Add a close button overlay
+  let closeBtn = document.getElementById('close-print');
+  if (!closeBtn) {
+    closeBtn = document.createElement('button');
+    closeBtn.id = 'close-print';
+    closeBtn.textContent = '✕ Back';
+    closeBtn.style.cssText = 'position:fixed;top:20px;left:20px;z-index:10000;padding:10px 20px;background:#1A2B3C;color:#fff;border:none;font-family:Jost,sans-serif;font-size:11px;letter-spacing:2px;cursor:pointer';
+    closeBtn.onclick = function() {
+      iframe.style.display = 'none';
+      closeBtn.style.display = 'none';
+    };
+    document.body.appendChild(closeBtn);
+  }
+  iframe.style.display = 'block';
+  closeBtn.style.display = 'block';
+
 } catch(err) {
   alert('Error: ' + err.message);
 }
